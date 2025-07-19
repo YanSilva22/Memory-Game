@@ -1,0 +1,70 @@
+/* plano de fundo */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url('../imagens/Namekkusei.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+/* cor texto da caixa */
+.login-form {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  color: #ffffffd3;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+/* estilo do input */
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background: #0a1a2f; 
+  color: #ffffff;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+/* quando passa o mouse emcima */
+.input-group input:hover {
+  background: #1b2f4a;
+}
+/* quando seleciona o input */
+.input-group input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #00ccff;
+  background: #2a2a4a; 
+}
+/* estilo do botão */
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #00a2ca;
+  color: #d4d4d4;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+/* quando passa o mouse emcima */
+button:hover {
+  background: #006c86;
+  color: #c7c7c7;
+}
