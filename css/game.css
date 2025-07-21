@@ -1,0 +1,21 @@
+/* plano de fundo */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: url('../imagens/torneio.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* cabecalho */
+.header {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  color: #ffffffd3;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 90%;
+  margin: 20px auto 0;
+}
