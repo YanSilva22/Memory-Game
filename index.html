@@ -15,23 +15,27 @@
   <meta name="author" content="Yan Silva">
 
   <meta name="keywords" content="Game memory, jogo de memória, jogo, diversão">
-
+  
 </head>
 <body>
+  <header class="header">
+    <h1>Dragon Ball Memory Game</h1>
+    <br>
+    <p>Desafie sua memória com os personagens de Dragon Ball</p>
+  </header>
+
   <div class="container">
     <form class="login-form">
-      <h1>Memory Game</h1>
+      <h2>Entre no jogo</h2>
       <br>
-      <p>Bem-vindo ao Jogo da Memória!</p>
-      <br>
-      <p>Teste sua memória e divirta-se jogando.</p>
+      <p>Digite seu nome para começar a jogar.</p>
       <br>
       <div class="input-group">
-        <label for="username">Nome de usuário:</label>
-        <input type="text" id="username" name="username" required>
+        <label for="username">Nome de jogador:</label>
+        <br>
+        <input class="input-login" type="text" id="username" name="username" placeholder="Ex: Goku123" required>
       </div>
-      <button type="submit">Entrar</button>
-
+      <button type="submit" disabled>Começar Jogo</button>
     </form>
   </div>
 </body>
