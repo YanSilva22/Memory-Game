@@ -18,3 +18,19 @@ const formSubmit = (event) => {
 
 input.addEventListener('input', inputValidation);
 form.addEventListener('submit', formSubmit);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const popup = document.getElementById('popup-som');
+  const btnAceitar = document.getElementById('aceitar-som');
+  const btnRecusar = document.getElementById('recusar-som');
+  const audio = document.getElementById('audio-jogo');
+
+  btnAceitar.addEventListener('click', () => {
+    audio.play();
+    popup.style.display = 'none';
+  });
+
+  btnRecusar.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+});
