@@ -84,3 +84,15 @@ cards.forEach(src => {
         }
     });
 })
+document.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('audio-jogo');
+  const somAtivado = localStorage.getItem('somAtivado');
+
+  if (somAtivado === 'true') {
+    audio.volume = 1;
+    audio.currentTime = 0;
+    audio.play().catch(err => {
+      console.log("Erro ao tentar tocar o som:", err);
+    });
+  }
+});

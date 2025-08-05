@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnAceitar.addEventListener('click', () => {
     audio.play();
+    localStorage.setItem('somAtivado', 'true');
     popup.style.display = 'none';
   });
 
