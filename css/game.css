@@ -21,6 +21,10 @@ body {
   margin-bottom: 20px;
 }
 
+#player-name {
+    margin-right: 100px; /* espaço de 20px à direita */
+}
+
 /* Container onde as cartas ficam organizadas */
 .game-board {
   display: grid;

@@ -2,6 +2,46 @@
 const playerName = localStorage.getItem('username');
 document.getElementById('player-name').textContent = playerName;
 
+// --- VARIÁVEIS DO CRONÔMETRO ---
+let timerInterval;
+let segundosTotais = 0;
+
+// função para formatar em mm:ss
+function formatarTempo(segundos) {
+    const min = String(Math.floor(segundos / 60)).padStart(2, '0');
+    const seg = String(segundos % 60).padStart(2, '0');
+    return `${min}:${seg}`;
+}
+
+// iniciar cronômetro
+function iniciarTimer() {
+    timerInterval = setInterval(() => {
+        segundosTotais++;
+        document.getElementById('timer').textContent = formatarTempo(segundosTotais);
+    }, 1000);
+}
+
+// parar cronômetro
+function pararTimer() {
+    clearInterval(timerInterval);
+}
+
+// inicia o timer quando carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('audio-jogo');
+    const somAtivado = localStorage.getItem('somAtivado');
+
+    iniciarTimer(); // <-- inicia cronômetro
+
+    if (somAtivado === 'true') {
+        audio.volume = 1;
+        audio.currentTime = 0;
+        audio.play().catch(err => {
+            console.log("Erro ao tentar tocar o som:", err);
+        });
+    }
+});
+
 // Lista com todas as imagens personagens
 const img = [
     "../imagens/Bills.png",
@@ -70,6 +110,7 @@ cards.forEach(src => {
 
                 // Verifica se ganhou
                 if (paresEncontrados === totalPares) {
+                    pararTimer();
                     tocarMusicaVitoria();
 
                 }
@@ -109,7 +150,7 @@ function tocarMusicaVitoria() {
     const audioVitoria = new Audio("../songs/song completo.mp3");
 
     // trecho específico
-    const inicio = (1 * 60) + 22; // 1:22
+    const inicio = (1 * 60) + 23; // 1:22
     const fim = (1 * 60) + 33;    // 1:33
 
     audioVitoria.currentTime = inicio;
