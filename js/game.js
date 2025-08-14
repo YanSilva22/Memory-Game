@@ -14,7 +14,7 @@ const img = [
     "../imagens/Piccolo.png",
     "../imagens/Vegeta.png",
     "../imagens/Whis.png",
-]
+];
 
 // Duplicando as imagens
 const cards = [...img, ...img];
@@ -26,17 +26,17 @@ cards.sort(() => Math.random() - 0.5);
 const gameBoard = document.querySelector('.game-board');
 
 // controle do jogo
-let primeiraCarta = null; //primeia carta virada
-let segundaCarta = null; //segunda carta virada
-let pararjogada = false; //impede o clique quando ja ha duas cartas viradas
+let primeiraCarta = null;
+let segundaCarta = null;
+let pararjogada = false;
+let paresEncontrados = 0; // contar pares corretos
+const totalPares = img.length; // total de pares do jogo
 
-// Criando cartas no tabuleiro (gameBoard)
+// Criando cartas no tabuleiro
 cards.forEach(src => {
-    // cria div onde ira ficar as cartas class = card
     const card = document.createElement('div');
     card.classList.add('card');
 
-    // adicionando a carta
     card.innerHTML = `
     <div class="card-inner">
         <div class="card-front"><img src="${src}" /></div>
@@ -44,46 +44,49 @@ cards.forEach(src => {
     </div>
     `;
 
-    //adicionando a carta criada dentro do html
     gameBoard.appendChild(card);
     
-    // adicionando evento de clique na carta
     card.addEventListener('click', () => {
-        // se ja tiver duas cartas viradas, nao faz nada
         if (pararjogada) return;
-
-        // se a carta ja estiver virada, nao faz nada
         if (card.classList.contains('flipped')) return;
 
-        // vira a carta
         card.classList.add('flipped');
 
-        // verifica se eh a primeira ou segunda carta virada
         if (!primeiraCarta) {
             primeiraCarta = card;
         } else {
             segundaCarta = card;
-            pararjogada = true; // impede novas jogadas
+            pararjogada = true;
 
             const img1 = primeiraCarta.querySelector('img').src;
             const img2 = segundaCarta.querySelector('img').src;
-            // verifica se as cartas sao iguais
+
             if (img1 === img2) {
+                paresEncontrados++;
+
                 primeiraCarta = null;
                 segundaCarta = null;
-                pararjogada = false; // permite novas jogadas
+                pararjogada = false;
+
+                // Verifica se ganhou
+                if (paresEncontrados === totalPares) {
+                    tocarMusicaVitoria();
+
+                }
+
             } else {
                 setTimeout(() => {
                     primeiraCarta.classList.remove('flipped');
                     segundaCarta.classList.remove('flipped');
                     primeiraCarta = null;
                     segundaCarta = null;
-                    pararjogada = false; // permite novas jogadas
+                    pararjogada = false;
                 }, 1000);
             }
         }
     });
-})
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const audio = document.getElementById('audio-jogo');
   const somAtivado = localStorage.getItem('somAtivado');
@@ -96,3 +99,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+function tocarMusicaVitoria() {
+    // para o som do jogo
+    const audioFundo = document.getElementById('audio-jogo');
+    audioFundo.pause();
+
+    // cria novo áudio para vitória
+    const audioVitoria = new Audio("../songs/song completo.mp3");
+
+    // trecho específico
+    const inicio = (1 * 60) + 22; // 1:22
+    const fim = (1 * 60) + 33;    // 1:33
+
+    audioVitoria.currentTime = inicio;
+    audioVitoria.play();
+
+    // corta quando chegar no fim
+    const intervalo = setInterval(() => {
+        if (audioVitoria.currentTime >= fim) {
+            audioVitoria.pause();
+            clearInterval(intervalo);
+        }
+    }, 100);
+}
