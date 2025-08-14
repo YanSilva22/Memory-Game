@@ -112,7 +112,7 @@ cards.forEach(src => {
                 if (paresEncontrados === totalPares) {
                     pararTimer();
                     tocarMusicaVitoria();
-
+                    mostrarPopupVitoria();
                 }
 
             } else {
@@ -150,8 +150,8 @@ function tocarMusicaVitoria() {
     const audioVitoria = new Audio("../songs/song completo.mp3");
 
     // trecho específico
-    const inicio = (1 * 60) + 23; // 1:22
-    const fim = (1 * 60) + 33;    // 1:33
+    const inicio = (1 * 60) + 24; // 1:24
+    const fim = (1 * 60) + 32;    // 1:32
 
     audioVitoria.currentTime = inicio;
     audioVitoria.play();
@@ -163,4 +163,50 @@ function tocarMusicaVitoria() {
             clearInterval(intervalo);
         }
     }, 100);
+}
+function mostrarPopupVitoria() {
+    const popup = document.getElementById('popup-vitoria');
+    const player = localStorage.getItem('username') || 'Player';
+
+    document.getElementById('popup-player').textContent = player;
+    document.getElementById('popup-timer').textContent = formatarTempo(segundosTotais);
+
+    popup.style.display = 'flex';
+
+    const btnReiniciar = document.getElementById('btn-reiniciar');
+    const btnSair = document.getElementById('btn-sair');
+
+    // Bloqueia os botões
+    btnReiniciar.disabled = true;
+    btnSair.disabled = true;
+    btnReiniciar.style.opacity = 0.5;
+    btnSair.style.opacity = 0.5;
+
+    // Função que libera os botões quando a música termina
+    const audioVitoria = new Audio("../songs/song completo.mp3");
+    const inicio = (1 * 60) + 24; // 1:24
+    const fim = (1 * 60) + 32;    // 1:32
+    audioVitoria.currentTime = inicio;
+    audioVitoria.play();
+
+    const intervalo = setInterval(() => {
+        if (audioVitoria.currentTime >= fim) {
+            audioVitoria.pause();
+            clearInterval(intervalo);
+
+            // Libera os botões
+            btnReiniciar.disabled = false;
+            btnSair.disabled = false;
+            btnReiniciar.style.opacity = 1;
+            btnSair.style.opacity = 1;
+        }
+    }, 100);
+
+    // Adiciona eventos apenas após a música terminar
+    btnReiniciar.onclick = () => {
+        if (!btnReiniciar.disabled) window.location.reload();
+    };
+    btnSair.onclick = () => {
+        if (!btnSair.disabled) window.location.href = '../index.html';
+    };
 }
