@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   btnRecusar.addEventListener('click', () => {
+    localStorage.setItem('somAtivado', 'false');
     popup.style.display = 'none';
   });
 });
