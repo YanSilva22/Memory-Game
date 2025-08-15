@@ -79,7 +79,7 @@ Depois disso, abra o arquivo index.html no seu navegador.
 
 Você também pode jogar diretamente pelo navegador sem precisar baixar nada.
 
-**Acesse o jogo por este link:** _<link será adicionado aqui>_
+**Acesse o jogo por este link:** _<https://yansilva22.github.io/Memory-Game/>_
 
 ## 🎮 Como Jogar
 
