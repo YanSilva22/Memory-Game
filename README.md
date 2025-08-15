@@ -6,13 +6,16 @@ O objetivo é combinar pares de cartas com personagens icônicos da série, test
 
 ## 📌 Índice
 
-- [Descrição](#descrição)
-- [Recursos](#recursos)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Instalação](#instalação)
-- [Como Jogar](#como-jogar)
-- [Preview do Jogo](#🖼️-preview-do-jogo)
-- [Contato](#contato)
+- [Descrição](#Descrição)
+- [Recursos](#Recursos)
+- [Tecnologias Utilizadas](#Tecnologias-Utilizadas)
+- [Instalação](#Instalação)
+  - [🔧 Opção 1 — Clonando o repositório (Git)](#Opção-1-—-Clonando-o-repositório-(Git))
+  - [📦 Opção 2 — Baixando como ZIP](#Opção-2-—-Baixando-como-ZIP)
+  - [🌐 Opção 3 — Jogar online](#Opção-3-—-Jogar-online)
+- [Como Jogar](#Como-Jogar)
+- [Preview do Jogo](#Preview-do-Jogo)
+- [Contato](#Contato)
 
 
 ## 📝 Descrição
@@ -115,3 +118,4 @@ Você também pode jogar diretamente pelo navegador sem precisar baixar nada.
 
 > ⚠️ Aviso: Todas as imagens do jogo foram **geradas por Inteligência Artificial**.  
 > Este projeto é apenas **para fins educativos e de entretenimento**, sem intenção de infringir direitos autorais.
+
